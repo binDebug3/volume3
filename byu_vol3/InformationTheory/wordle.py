@@ -94,7 +94,7 @@ class WordleGame:
         # Output things, complete with color
         if self.display:
             output_chars = (' ','-','+')
-            output_colors = (Fore.BLACK + Style.BRIGHT,
+            output_colors = (Fore.WHITE + Style.BRIGHT,
                             Fore.YELLOW + Style.NORMAL,
                             Fore.GREEN + Style.BRIGHT)
             top_str = ""
