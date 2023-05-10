@@ -1,4 +1,6 @@
 # Default ignored files
 /shelf/
 /workspace.xml
-/InformationTheory/full_words.npy
+full_words.npy
+fake.txt
+/InformationTheory/fake2.txt
