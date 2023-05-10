@@ -1,7 +1,0 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-full_words.npy
-fake4.txt
-/InformationTheory/fake4.txt
-/byu_vol3/InformationTheory/fake4.txt
