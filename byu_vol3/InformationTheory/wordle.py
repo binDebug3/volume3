@@ -17,11 +17,11 @@ def load_words(filen):
     return words
 
 class WordleGame:
-    def __init__(self, allowed_fn='allowed_words.txt', possible_fn='possible_words.txt'):
+    def __init__(self, allowed_fn='allowed_guesses.txt', possible_fn='possible_secret_words.txt'):
         self.allowed_words = load_words(allowed_fn)
         self.possible_words = load_words(possible_fn)
         self.word = None
-        self.game_finished = False
+        self._game_finished = False
         
     def start_game(self, word=None, display=False):
         """
@@ -40,7 +40,13 @@ class WordleGame:
         self.display = display
         self.guess_ct = 0
         self.guesses_made = []
-        self.game_finished = False
+        self._game_finished = False
+    
+    def is_finished(self):
+        """
+        Returns whether the game has been finished.
+        """
+        return self._game_finished
     
     def make_guess(self, guess):
         """
@@ -54,8 +60,8 @@ class WordleGame:
             (tuple of int) - result of the guess. 0 indicates incorrect letter, 1 indicates correct letter in the wrong location, 2 indicates correct letter.
             (int) - number of guesses made so far
         """
-        if self.game_finished:
-            raise ValueError("The game has already finished. Start a new game with start_game() before making more guesses. Are you checking whether your guesses are correct?")
+        if self.is_finished():
+            return self.guess_ct
         elif self.word is None:
             raise ValueError("A game must be started before making a guess")
         guess = guess.lower().strip()
@@ -94,7 +100,7 @@ class WordleGame:
         # Output things, complete with color
         if self.display:
             output_chars = (' ','-','+')
-            output_colors = (Fore.WHITE + Style.BRIGHT,
+            output_colors = (Fore.WHITE + Style.DIM,
                             Fore.YELLOW + Style.NORMAL,
                             Fore.GREEN + Style.BRIGHT)
             top_str = ""
@@ -110,8 +116,7 @@ class WordleGame:
                 print("Number of guesses:",self.guess_ct)
         
         if correct:
-            self.word = None
-            self.game_finished = True
+            self._game_finished = True
             
         return result, self.guess_ct
             
@@ -132,4 +137,3 @@ class WordleGame:
             except Exception as e:
                 print(e)
         
-        self.word = None
