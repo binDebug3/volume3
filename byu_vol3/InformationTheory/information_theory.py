@@ -410,7 +410,7 @@ if __name__ == "__main__":
     # game = wordle.WordleGame()
     # all_guess_results = np.load('all_guess_results.npy')
     # possible_secret_words = load_words('possible_secret_words.txt')
-    # allowed_guesses = load_words('allowed_guesses.txt')
+    # allowed_guesses = load_words('allowed_guesses.txt') 
     # print(play_game_entropy(game, all_guess_results, possible_secret_words, allowed_guesses, word='booze', display=True))
 
     '''Problem 6'''
